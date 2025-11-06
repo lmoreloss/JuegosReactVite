@@ -28,9 +28,17 @@ function App() {
     "qr-codeBO7.png",
     "qr-codeKAR.png",
   ];
+
+  const videos = [
+    "ng4Render.mp4",
+    "bf6Render.mp4",
+    "hk2Render.mp4",
+    "bo7Render.mp4",
+    "karRender.mp4",
+  ];
   //
-  //Cada cuanto tiempo cambia
-  const tiempoCambio = 4000;
+  //Cada cuanto tiempo cambia. Se recomienda que sea menor a 12000 milisegundos
+  const tiempoCambio = 11500;
   //
   //Cuanto tiempo dura el fade
   const duracionFade = 500;
@@ -50,6 +58,7 @@ function App() {
   const [haceFade, setHaceFade] = useState(false);
   const [haceHover, setHaceHover] = useState(false);
   const [modal, setModal] = useState(false);
+  const [videoSource, setVideoSource] = useState("ng4Render.mp4");
 
   const mostrarModal = () => {
     setModal((modal) => !modal);
@@ -86,15 +95,14 @@ function App() {
     setSource(covers[cambiarIMG]);
     setTexto(textos[cambiarIMG]);
     setQR(qrs[cambiarIMG]);
-  }, [cambiarIMG, covers, qrs, textos]);
+    setVideoSource(videos[cambiarIMG]);
+  }, [cambiarIMG, covers, qrs, textos, videos]);
 
   useEffect(() => {
     const handleKeyDown = (e: { key: string }) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       teclas = (teclas + e.key).slice(-teclasObjetivo.length);
-      console.log(teclas);
       if (teclas === teclasObjetivo) {
-        console.log("Konami");
         teclas = "";
         setModal((modal) => !modal);
       }
@@ -140,8 +148,18 @@ function App() {
   }
 
   return (
-    <main className="flex items-center justify-center pt-16 pb-4">
-      <div className="flex-1 flex flex-col items-center gap-8 min-h-0">
+    <main className="flex items-center justify-center pt-16 pb-4 h-screen">
+      <video
+        autoPlay
+        muted
+        loop
+        src={videoSource}
+        className={`absolute -z-1 object-fill w-screen h-screen blur-[10px] elemento ${
+          haceFade ? "fade" : ""
+        }`}
+        style={{ transition: `opacity ${duracionFade}ms ease-in-out` }}
+      ></video>
+      <div className="flex-1 flex flex-col items-center gap-8 min-h-0 max-[600px]:hidden">
         <svg
           viewBox="-19.04 0 75.804 75.804"
           xmlns="http://www.w3.org/2000/svg"
@@ -228,7 +246,7 @@ function App() {
           </nav>
         </div>
       </div>
-      <div className="flex-1 flex flex-col items-center gap-8 min-h-0">
+      <div className="flex-1 flex flex-col items-center gap-8 min-h-0 max-[600px]:hidden">
         <svg
           viewBox="-19.04 0 75.804 75.804"
           xmlns="http://www.w3.org/2000/svg"
