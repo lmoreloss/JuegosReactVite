@@ -370,12 +370,12 @@ function App() {
       {modal && <Concepto cerrarModal={mostrarModal}></Concepto>}
       <div className="flex-1 flex flex-col items-center gap-8 min-h-0">
         <header className="flex flex-col items-center gap-1">
-          <p className="text-4xl">テレビゲーム</p>
+          <p className="text-4xl text-gray-200">テレビゲーム</p>
           <div className="w-[250px] max-w-[100vw] p-4">
             <img
               src={source}
               alt="React Router"
-              className={`rounded-sm hidden w-full dark:block max-h-[250px] aspect-square elemento ${
+              className={`rounded-sm w-full max-h-[250px] aspect-square elemento ${
                 haceFade ? "fade" : ""
               }`}
               style={{ transition: `opacity ${duracionFade}ms ease-in-out` }}
@@ -386,9 +386,9 @@ function App() {
           </div>
         </header>
         <div className="flex max-w-[300px] w-full space-y-6 px-4">
-          <nav className="rounded-3xl border border-gray-200 p-3 dark:border-gray-700 space-y-4">
+          <nav className="rounded-3xl border border-gray-200 p-3 space-y-4">
             <p
-              className={`leading-6 text-gray-700 dark:text-gray-200 text-center elemento ${
+              className={`leading-6 text-gray-200 text-center elemento ${
                 haceFade ? "fade" : ""
               }`}
               style={{ transition: `opacity ${duracionFade}ms ease-in-out` }}
@@ -400,7 +400,7 @@ function App() {
             <img
               src={qr}
               alt="React Router"
-              className={`rounded-sm hidden w-25 dark:block mx-auto elemento ${
+              className={`rounded-sm w-25 mx-auto elemento ${
                 haceFade ? "fade" : ""
               }`}
               style={{ transition: `opacity ${duracionFade}ms ease-in-out` }}
@@ -408,7 +408,7 @@ function App() {
               onMouseLeave={() => setHaceHover(false)}
             />
             <p
-              className={`leading-6 text-gray-700 dark:text-gray-200 text-center elemento ${
+              className={`leading-6 text-gray-200 text-center elemento ${
                 haceFade ? "fade" : ""
               }`}
               style={{ transition: `opacity ${duracionFade}ms ease-in-out` }}
